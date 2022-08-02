@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<div class=" mainList around">
+<ul th:each="dto : ${list}"><!-- ItemsListDTO -->
+	<li><!-- ItemsFileDTO -->
+	<a th:href="|/common/items/${dto.ino}|"><!-- 문자열과el요소 바 넣어줌 -->
+		<img  alt="이미지" height="300px" 
+		th:src="${dto.defImgUrl}"></a><!-- 이미지 둘 다 뜸?! -->
+	</li>
+	<ul class="flex around">
+	<li>[[${dto.name}]]</li>
+	<li>[[${dto.price}]]원</li>
+	</ul>
+</ul>
+</div>
+</html>

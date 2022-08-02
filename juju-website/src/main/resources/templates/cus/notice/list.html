@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+th:replace="~{layout/layout1 :: layout(~{::head}, ~{::main})}">
+<head>
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+
+<script src="/js/my-summernote.js"></script>
+<script src="/js/fileupload.js"></script>
+
+<link rel="shortcut icon" href="/images/icon/mangocafe.png">
+<link rel="stylesheet" href="/css/admin/items/list.css"/>
+</head>
+<main>
+	<h2>판매상품 리스트페이지</h2>
+	<a href="/admin/items/write">상품 등록</a>
+	<div class="wrap">
+		<section id="items-reg">
+			<table>
+				<tr>
+					<td>상품 번호</td>
+					<td>상품 이미지</td>
+					<td>상품 이름</td>
+					<td>상품 가격</td>
+					<td>상품 할인</td>
+					<td>상품 재고</td>
+				</tr>	
+				<tr th:each="dto : ${list}" class="flex"><!-- ItemsListDTO -->
+					<td>[[${dto.ino}]]</td>
+					<td>
+					<!-- <a href="/admin/items/detail">상품 이미지</a> -->
+					<a th:href="|/common/items/${dto.ino}|"><img alt="이미지" height="100px" 
+							th:src="${dto.defImgUrl}"></a><!-- 이미지 둘 다 뜸?! -->
+					</td><!-- ItemsFileDTO -->
+					<td>[[${dto.name}]]</td>
+					<td>[[${dto.price}]]</td>
+					<td>[[${dto.sale}]]</td>
+					<td>[[${dto.stock}]]</td>
+				</tr>
+			</table>
+		</section>
+	</div>
+</main>
+</html>

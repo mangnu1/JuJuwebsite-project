@@ -1,0 +1,28 @@
+@charset "UTF-8";
+
+.swiper{
+	background-color: #eee;
+	width: 1200px;
+  	margin-bottom: 10px;
+}
+
+swiper-pagination{
+	width: 40px;
+	height: 3px;
+	background-color: #fff;
+}
+
+
+swiper-button-prev,
+swiper-button-next{
+	background-color: #ffd100;
+	box-shadow: 0 4px 12px #e6bd00;
+}
+
+#new-product>.swiper>.swiper-wrapper>.desc_box>.subject{
+	overflow: hidden;
+    width: 300px;
+    height: 90px;
+    padding: 0px 40px;
+    text-align: center;
+}

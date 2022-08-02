@@ -1,0 +1,47 @@
+@charset "UTF-8";
+
+/* 질문 아래가 흰색이 보임 와이라누? */
+
+footer{
+	width: 100%;
+	background-color: rgb(226,226,226);
+	/* border: 1px solid red; */
+}
+
+.ft {
+	display: inline-block;
+	height: 300px;
+    padding: 40px 0;
+    margin-bottom: 40px;
+    border-bottom: 1px solid rgb(75,38,22);
+}
+
+.ft .wrap ul li{
+	text-align: center;
+	margin-bottom: 15px;
+    color: #5F2D9A;
+}
+
+.ft .wrap ul li a{
+	
+	display: block;
+	margin-top: 3px;
+	color: rgb(95,77,63);
+}
+
+.fb{
+	height:200px;
+	
+}
+
+.fb ul li{
+	display: inline-block;
+    margin: 0 3px;
+    color: rgb(95,77,63);
+    margin-bottom: 15px;
+}
+
+.fb div p{
+    color: rgb(95,77,63);
+    line-height: 24px;
+}

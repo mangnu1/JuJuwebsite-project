@@ -1,0 +1,63 @@
+@charset "UTF-8";
+
+.li1{
+	font-size: 30px;
+	margin-left: 20px;
+	line-height: 72.97px;
+	color: #5F2D9A;
+	text-align: center;
+	margin: 50px 0 ;
+	
+}
+
+table{
+	width:450px;
+	height: 400px;
+	border: 1px solid #FFDC17;
+}
+
+th,td{
+	
+	border: 1px solid #FFDC17;
+	text-align: center;
+}
+th{
+	width: 100px;
+}
+td{
+	width: 200px;
+}
+
+#items-reg td div .image{
+	width: 350px;
+	height: 300px;
+}
+
+#items-reg .wrap .image{
+	display: flex;
+	width: 370px;
+	height: 320px;
+}
+
+#btn-payment{
+	width: 100px;
+	height: 40px;
+}
+.flex{
+	display: flex;
+}
+.payButton{
+	border: none;
+}
+#btn-payment{
+	border:none;
+	background-color: #FFDC17;
+	color:black;
+	font-weight:bold;
+	
+width: 100%;
+height: 100%;
+}
+#btn-payment:hover{
+	text-decoration: underline;
+}

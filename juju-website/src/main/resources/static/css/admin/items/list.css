@@ -1,0 +1,42 @@
+@charset "UTF-8";
+
+.li1{
+	font-size: 30px;
+	margin-left: 20px;
+	line-height: 72.97px;
+	color: #5F2D9A
+}
+
+table{
+	width: 100%;
+	height: 30px;
+	border: 1px solid #FFDC17;
+}
+
+th,td{
+	border: 1px solid #FFDC17;
+	width: 100px;
+	height: 50px;
+	text-align: center;
+}
+
+.a1{
+	display: flex;
+	justify-content: between;
+	
+}
+
+.a1 div a{
+	line-height: 72.97px;
+	font-size: 20px;
+	margin-right: 20px;
+	background-color: #5F2D9A;
+	color: #FFDC17;
+}
+
+.a1 div p {
+	width: 100px;
+	height: 40px;
+	background-color: #5F2D9A;
+	color: #FFDC17;
+}

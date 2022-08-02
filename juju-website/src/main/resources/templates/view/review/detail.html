@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<th:block th:insert="~{commons/common :: head}"/>
+	<link rel="stylesheet" href="/css/board/list.css"/>
+	<meta name="_csrf" th:content="${_csrf.token}"/>
+	<meta name="_csrf_header" th:content="${_csrf.headerName}"/>
+		<!-- summernote 페이지 활용 -->
+	<!-- include libraries(jQuery, bootstrap) -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<!-- include summernote css/js -->
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$(".summernote").summernote();
+	});
+</script>
+<link rel="stylesheet" href="/css/review/detail.css"/>
+</head>
+<body>
+	<th:block th:insert="~{commons/common :: header}"/>
+	<!-- //////////////////////////////////////////////////// -->
+	<main>
+	<h1>망고라떼 상품후기 디테일페이지</h1>
+	
+	<p class="li1">망고라떼 상품후기 페이지</p>
+	<div id="detail-view">
+	<table id="view-size center">
+				<tr>
+					<td>글번호</td>
+					<td id="no">[[${detail.no}]]</td>
+				</tr>
+				<tr>
+					<td>제목</td>
+					<td th:text="${detail.title}">제목이 들어갈거예요</td>
+				</tr>
+				<tr>
+					<td>작성일</td>
+					<td th:text="${detail.updatedDate}">최종 수정일 들어갈거예요</td>
+				</tr>
+				<tr>
+					<td>작성자</td>
+					<td th:text="${detail.writer}">jsp는값이 존재하지 않을때 null 찍혀부림요?작성자의 이메일이 들어갈거예요</td>
+				</tr>
+				<tr>
+					<td>조회수</td>
+					<td th:text="${detail.readCount}">조회수가 들어갈거예요</td>
+				</tr>
+				<tr class="content">
+					<td>내용</td>
+					<td>
+						<div th:utext="${detail.content}">내용이 적용될거예요[(${detail.content})]</div>
+						<!-- 태그 다 적용하게 하는게 utext -->
+					</td>
+				</tr>
+				<tr>
+				<td colspan="2">
+				<div class="buttonList" >
+				<div><a href="/reviews/list">목록</a></div>
+						<!-- 겟매핑에 리스트에서 데이터 정보 읽어오는 주소 /board --> <!-- loginfo 존재하면 -->
+						<th:block th:if="${detail.writer}"><!-- th로도묶기가능 div는 inline으로해놔서 안씀 -->
+						<!-- 이메일과 작성자가 같아야지만 버튼 생김!  -->
+						<div><button type="button" id="btn-edit" th:if="${detail.writer}">수정</button><!-- 수정으로 바뀜 -->
+						</div>
+						<div>
+						<button type="button" id="btn-del" th:if="${detail.writer}">삭제</button><!-- 삭제로 바뀜 -->
+						</div>
+						</th:block>
+						</div>
+				</td>
+				</tr>
+			</table>
+			</div>
+			<script th:inline="javascript">
+			
+			$(function(){
+				$("#btn-del").click(function(){
+					var token = $("meta[name='_csrf']").attr("content");
+					var header = $("meta[name='_csrf_header']").attr("content");
+					
+					var result=confirm("do you want delete??");
+					/* 확인: true 취소: false */
+					//console.log(r);
+					if(!result)return;//false이면 종료 //delete를 목적으로 하고 있다..
+					var no="[[${detail.no}]]";
+					//alert(no);
+					$.ajax({
+						beforeSend: function(xhr) {xhr.setRequestHeader(header, token);},
+						url:"/reviews/"+no,//.trim(),
+						type:"delete",
+						//type:"post",//ajax개킹받내 ㄹㅇ
+						//data:{"_method":"delete"},//메서드값 체크하는게 필터?히든 파라미터?
+						success:function(result) {
+							location.href="/reviews/list";
+						}
+					});
+					
+				});
+			});
+			
+			$(function(){
+				$("#btn-edit").click(function(){
+					$("#detail-view").hide();
+					$("#edit-form").show(); /* 디스프레이 속성을 블록으로 바꿔줌?? */
+				});
+				$("#btn-cancel").click(function(){
+					$("#detail-view").show();
+					$("#edit-form").hide();
+				});
+			});
+			</script>
+			<div id="edit-page">
+			<form style="display: none;" id="edit-form" th:action="|/reviews/${detail.no}|" method="post">
+				<table >
+					<tr>
+						<th>제목</td>
+						<td>
+							<input type="text" name="title" th:value="${detail.title}">
+						</td>
+					</tr>
+					<tr>
+						<th>작성일</td>
+						<td th:text="${detail.updatedDate}">최종 수정일 들어갈거예요</td>
+					</tr>
+					<tr>
+						<th>작성자</td>
+						<td th:text="${detail.writer}">작성자의 이메일이 들어갈거예요</td>
+					</tr>
+					<tr>
+						<th>조회수</td>
+						<td th:text="${detail.readCount}">조회수가 들어갈거예요</td>
+					</tr>
+					<tr>
+						<th>내용</th>
+						<td>
+							<textarea name="content" class="summernote">[(${detail.content})]</textarea>
+						</td>
+					</tr>
+					<tr>
+						<td	colspan="2"><!-- 두칸을 한칸으로 합치는... -->
+						<div class="buttonList" >
+							<div><a href="/reviews/list">LIST VIEW</a>
+							</div>
+							<!-- 겟매핑에 리스트에서 데이터 정보 읽어오는 주소 /board -->
+							<!-- <input type="hidden" name="no" value="${detail.no}">숨어있는 정보?? -->
+							<input type="hidden" name="_method" value="POST"><!-- put매핑을 위한 메서드 히든메서드 파라미터 필터 사용 -->
+							<div><button type="submit">수정완료</button><!-- 수정으로 바뀜 --></div>
+							<div><button type="button" id="btn-cancel">취소</button></div>
+							</div>
+						</td>
+					</tr>
+				</table>	
+			</form>
+			</div>
+		
+	</main>
+	<!-- //////////////////////////////////////////////////// -->
+	<th:block th:insert="~{commons/common :: footer}"/>
+</body>
+</html>

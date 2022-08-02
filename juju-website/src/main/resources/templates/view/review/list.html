@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<th:block th:insert="~{commons/common :: head}"/>
+	<link rel="stylesheet" href="/css/review/list.css"/>
+</head>
+<body>
+	<th:block th:insert="~{commons/common :: header}"/>
+	<!-- //////////////////////////////////////////////////// -->
+	<main>
+	<h1>망고라떼 상품 후기 페이지</h1>
+	<div class="view-size flex between">
+		<p class="li1">망고라떼 상품 후기페이지 입니다.</p>
+		<p class="reviewWrite"><a href="/reviews/write">상품 후기 작성</a></p>
+	</div>
+	<div class="a1 flex between">
+		<table class="wrap view-size between">
+			<thead>
+				<tr>
+					<td>글 번호</td>
+					<td>이미지</td>
+					<td>제목</td>
+					<td>작성자</td>
+					<td>조회수</td>
+					<td>작성일</td>
+				</tr>
+			</thead>
+			<tbody><!-- 내부 변수 뽑아오기 dto 가져와잇~~ -->
+				<tr th:each="dto: ${list}">
+					<td>[[${dto.no}]]</td>
+					<td>이미지</td>
+					<td><a th:href="|/reviews/${dto.no}|">[[${dto.title}]]</a></td>
+					<td>[[${dto.writer}]]</td>
+					<td>[[${dto.readCount}]]</td>
+					<td>[[${dto.createdDate}]]</td>
+				</tr>
+				
+			</tbody>
+		</table>
+	</div>
+	
+	</main>
+	<!-- //////////////////////////////////////////////////// -->
+	<th:block th:insert="~{commons/common :: footer}"/>
+</body>
+</html>

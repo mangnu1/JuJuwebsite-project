@@ -1,0 +1,118 @@
+@charset "UTF-8";
+
+#btn-logout{
+	border: none;
+}
+
+#htt{
+	height: 45px;
+	line-height: 45px;
+	background-color: #EEEEEE;
+}
+
+
+/* #htt>.wrap ul li a{
+	margin-left: 20px;
+}
+
+#htt>.wrap ul li span, button{
+	margin-left: 20px;
+} */
+
+
+#htb{
+	height: 100px;
+}
+#htb >.wrap ul li a{
+	width: 100%;
+}
+#logo>.wrap a{
+	background-image: url("/css/images/common/mango.jpg");
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+	display: block;
+	height: 100px;
+	width: 97px;
+	border-radius: 100%;
+}
+
+#top-menu{
+	/* outline:1px solid red; */
+	line-height: 100px;
+}
+
+#top-menu>.wrap ul.menues li a{
+	display: inline-block;
+	padding: 0 15px;
+	font-weight: 700;
+	margin: 0 2px;
+	text-align: center;
+}
+#htb>.wrap{
+	position: relative;
+}
+#top-menu>.wrap ul.menues li:hover div{
+	display: flex;
+}
+#top-menu>.wrap ul.menues li div{
+	width:100%;
+	position: absolute;
+	top:100px;
+	left: 0;
+	line-height: normal;
+	padding: 1em 0;
+	background-color: #EEEEEE;
+	display: none;
+	width: 100%;
+	
+}
+#top-menu>.wrap ul.menues li div ol{
+	margin: 0 30px;
+}
+
+
+main{
+	height: 900px;
+}
+/* 왜 겹쳐서 나오는가 어느 설정이 잘못 된거지? */
+
+#search div input{
+	outline: none;
+	border: none;
+	border-bottom: 1px solid #a9a9a9;
+	margin-right:40px; 
+	/*  이미지 추가하기 */
+	
+}
+
+#search>.wrap  {
+	height: 100%;
+}/* 이거로 길이 조절이 맞는가? 이것도 같이 잡혀서.. */
+
+#location>.wrap{
+	height: 30px;
+	background-color: #5F2D9A;
+}
+
+#location>.wrap a{
+	color: #fff;
+	line-height: 30px;
+}
+
+#w_icon{
+	display: inline-block;
+	width: 40px;
+	height: 40px;
+	vertical-align:middle;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+#htt div ul li {
+	margin-left:20px;
+	
+}
+#htt div ul li a{
+	color:black;
+}

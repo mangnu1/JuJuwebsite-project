@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+th:replace="~{layout/layout1 :: layout(~{::head}, ~{::main})}">
+
+<head>
+	<style type="text/css">
+.good {
+	width: 390px;
+}
+
+.items.img {
+	height: 260px;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+}
+.grid-container {
+margin:0 auto;
+	display: flex;
+	flex-wrap: wrap;
+	grid-template-columns: auto auto auto; /* 크기 커지면 몇개로 차는지? */
+	gap:10px;
+	
+}
+
+</style>
+</head>
+<body>
+	<!-- //////////////////////////////////////////////////// -->
+	<main>
+		<h1>메인컨텐츠</h1>
+		<div class="wrap flex view-size">
+			<section id="content">
+				<h1>메인컨텐츠</h1>
+				<div class="wrap view-size"></div>
+				<section id="page-title">
+					<h1>pageTitle</h1>
+					<div class="wrap">
+						<span>카테고리 : </span>
+						<th:block th:unless="${cateInfo}">
+							<a th:href="|/common/categorys/${catea.code}/items|">
+								<span>[[${catea.koName}]]</span>
+							</a>
+						</th:block>
+						<th:block th:if=${cateInfo}>
+							<a th:href="|/common/categorys/${cateInfo.catea.code}/items|">
+								<span>[[${cateInfo.catea.koName}]]</span>
+							</a>
+							<span>&nbsp;&gt;&nbsp;</span>
+								<a th:href="|/common/categorys/${cateInfo.caNo}/items|">
+									<span>[[cateInfo.name]]</span>
+								</a>
+						</th:block>
+					</div>
+				</section>
+				<div class="wrap flex center">
+				<section id="items-list">
+					<h1>상품리스트1</h1>
+					<div class="wrap">
+						<ul class="grid-container">
+							<li th:each="dto: ${list}" class="items good">
+							<!-- <div class="items img" th:style="|background-image: url(${dto.defImgUrl});|"> -->
+								<a th:href="|/common/items/${dto.ino}|"><img alt="테스트" th:src="${dto.defImgUrl}" style="width: 250px; height: 250px;"></a>
+								<!-- </div> -->
+								<div class="items info">
+									<p>[[${dto.name}]]</p>
+									<p>
+										<span >[[${dto.price}]]</span>
+										<span >[[${dto.sale}]]</span>
+										<span >[[${dto.price - dto.sale}]]</span>
+									</p>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</section>
+				</div>	
+	</section>
+		
+		
+		<!-- //////////////////////////////////////////////////////////// -->
+			<div>
+		
+			
+			
+
+			</div>	
+		
+		
+	</div>
+	</main>
+</body>
+</html>
+	
+	

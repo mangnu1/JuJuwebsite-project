@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+th:fragment="layout(head, main)">
+<head>
+ <title>망고라떼♥</title>
+
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="_csrf" th:content="${_csrf.token}"/>
+	<!-- default header name is X-CSRF-TOKEN -->
+	<meta name="_csrf_header" th:content="${_csrf.headerName}"/>
+	
+ 	 <!-- iamport.payment.js -->
+  	<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
+	
+	
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css"/>
+	<script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+    <link rel="shortcut icon" href="/images/icon/mangocafe.png">
+    
+    
+    
+    <!-- 공통적용할 css -->
+<link rel="stylesheet" href="/css/reset.css">
+<link rel="stylesheet" href="/css/header.css">
+<link rel="stylesheet" href="/css/footer.css">
+    
+    <script type="text/javascript" src="/js/pg.js"></script>
+    <script type="text/javascript" src="/js/weather.js"></script>
+    
+    <!-- summernote css -->
+    <th:block th:replace="${head}">page에서 설정한 head정보가 삽입</th:block>
+      <!-- jQuery -->
+</head>
+<body>
+  <header>
+    		<!--////////헤더상단//////////////////////////////////////////////// -->
+		<h1>헤더 상단</h1>
+		<div class= "h" >
+			<section id="htt">
+				<div class="wrap view-size flex end">
+					<li>
+						<span id="temp"></span>
+						<span>℃</span>
+						<span id="w_icon"></span>
+					</li>
+					<ul class=" flex">
+						<li><a href="/customer">고객센터</a></li>
+						<li sec:authorize="isAnonymous()">
+						<a href="/signinPage">로그인</a>
+						</li>
+						<li sec:authorize="isAnonymous()">
+						<a href="/common/signup">회원가입</a>
+						</li>
+						<li sec:authorize="isAuthenticated()">
+    						<span sec:authentication ="principal.name">username</span>
+    							<button id="btn-logout">로그아웃</button>
+    					</li>
+    					<li sec:authorize="hasRole('ROLE_ADMIN')"><a href="/admin/home">관리자페이지</a></li>
+						<li><a href="/common/ordercheck">주문조회</a></li>
+						<li><a href="/common/cart">장바구니</a></li>
+						<li><a href="/reviews/list">후기 작성글</a></li>
+					</ul>
+				</div>
+			</section>
+				<script type="text/javascript">
+    			$(function () {
+    				$("#btn-logout").click(function(){
+	    			var token = $("meta[name='_csrf']").attr("content");
+	    			var header = $("meta[name='_csrf_header']").attr("content");
+	    				
+	    			$.ajax({
+	    				beforeSend: function(xhr){xhr.setRequestHeader(header, token);},
+	    				url:"/logout",
+	    				type:"post",
+	    				success:function(){
+	    					location.href="/";
+	    					}
+    					});
+	    			});
+    			});
+    			/* https://docs.spring.io/spring-security/site/docs/5.0.x/reference/html/csrf.html#csrf-configure */
+    		</script>
+			<!--//////////////////////////////////////////////////////// -->
+			<!--////////헤더하단//////////////////////////////////////////////// -->
+			<section id="htb">
+				<h1>헤더 하단</h1>
+				<div class="wrap view-size flex between">
+					<section id="logo">
+						<div class="wrap">
+							<a href="/"></a>
+						</div>
+					</section>
+					<section id="top-menu">
+						<h1>메인메뉴</h1>
+						<div class="wrap">
+							<ul class="flex menues">
+								<li>
+									<a  href="#">BUY ONLINE</a>
+									<div class="flex center">
+										
+										<ol class="sub">
+											<li>View All</li>
+										</ol>
+										<ol class="sub">
+											<li>분쇄형 커피</li>
+											<li>드립백</li>
+											<li>소풍커피</li>
+											<li>파우치 커피</li>
+										</ol>
+										<ol class="sub">
+											<li><a href="/common/categorys/1200/items">원두</a></li><!-- 1차 카테고리 -->
+											<li><a href="#">원두 가이드</a></li>
+											<li><a href="/common/categorys/1201/items">라이트 로스트</a></li><!-- 2차 카테고리 -->
+											<li><a href="/common/categorys/1202/items">미디엄 로스트</a></li>
+											<li><a href="/common/categorys/1203/items">다크 로스트</a></li>
+										</ol>
+										<ol class="sub">
+											<li>티</li>
+											<li>티 가이드</li>
+											<li>클래식티</li>
+											<li>허브티</li>
+											<li>프룻티</li>
+										</ol>
+										<ol class="sub">
+											<li>View All</li>
+											<li>고양이</li>
+											<li>고양이</li>
+										</ol>
+										<ol class="sub">
+											<li>상품</li>
+											<li>스틱커피</li>
+											<li>아이스 텀블러</li>
+											<li>보온 텀블러</li>
+											<li>머그</li>
+											<li>파우더</li>
+											<li>푸드</li>
+											<li>기타상품</li>
+										</ol>
+										<ol class="sub">
+											<li>CBTL시스템</li>
+											<li>CBTL 머신</li>
+										</ol>
+									</div>
+								</li>
+								<li>
+									<a  href="#">MEMBER`S CLUB</a>
+									<div class="flex center">
+										<ol class="sub">
+											<li>커피빈 멤버스 클럽</li>
+											<li>멤버스 클럽</li>
+											<li>커피빈 카드</li>
+											<li>커피빈 e-Gift</li>
+										</ol>
+										<ol class="sub">
+											<li>나의 커피빈</li>
+											<li>나의 콩/e쿠폰보기</li>
+											<li>나의 커피빈 카드</li>
+											<li>커피빈 카드 등록</li>
+											<li>분실신고/환불신청</li>
+											<li>e-Gift 구매</li>
+										</ol>
+									</div>
+								</li>
+								<li>
+									<a  href="#">MENU</a>
+									<div class="flex center">
+										<ol class="sub">
+											<li>음료</li>
+											<li>신음료</li>
+											<li>에스프레소 음료</li>
+											<li>브루드 커피</li>
+											<li>티</li>
+											<li>티 라떼</li>
+											<li>아이스 블렌디드 (Coffee)</li>
+											<li>아이스 블렌디드 (Non-Coffee)</li>
+											<li>커피빈 주스(병음료)</li>
+											<li>기타 제조 음료</li>
+											<li>엑스트라</li>
+										</ol>
+										<ol class="sub">
+											<li>푸드</li>
+											<li>베이커리</li>
+											<li>케익</li>
+											<li>홀케익</li>
+											<li>샌드위치 & 샐러드</li>
+											<li>기타</li>
+										</ol>
+										<ol class="sub">
+											<li>상품</li>
+											<li>아이스 텀블러</li>
+											<li>보온 텀블러</li>
+											<li>머그</li>
+											<li>소풍커피</li>
+											<li>스틱커피</li>
+											<li>파우더</li>
+											<li>기타상품</li>
+										</ol>
+										<ol class="sub">
+											<li>카드</li>
+											<li>e-Gift 카드</li>
+											<li>실물 카드</li>
+										</ol>
+									</div>
+								</li>
+								<li>
+									<a  href="#">STORE & 서비스</a>
+									<div class="flex center">
+										<ol class="sub">
+											<li>View All</li>
+										</ol>
+										<ol class="sub">
+											<li>케이터링 서비스</li>
+											<li>매장 찾기</li>
+											<li>신규 매장</li>
+										</ol>
+									</div>
+								</li>
+								<li>
+									<a  href="#">THE COFFEE BEAN</a>
+									<div class="flex center">
+										<ol class="sub">
+											<li>커피빈 코리아</li>
+											<li>Simply the Best</li>
+											<li>커피빈 커피와 티</li>
+										</ol>
+										<ol class="sub">
+											<li>새소식</li>
+											<li>프로모션</li>
+											<li>공지사항</li>
+											<li>소셜미디어</li>
+										</ol>
+										<ol class="sub">
+											<li>사회공헌</li>
+											<li>국제 사회공헌</li>
+											<li>필리핀 청소년 교육혜택 지원하기</li>
+											<li>성경원, 나눔의 샘 후원 결연</li>
+										</ol>
+										<ol class="sub">
+											<li>채용안내</li>
+											<li>채용안내 바로가기</li>
+											<li>채용카테고리</li>
+										</ol>
+										<ol class="sub">
+											<li>신규 입점 제의</li>
+											<li>결산공고</li>
+										</ol>
+									</div>
+								</li>
+								<li>
+									<a  href="#">CBTL</a>
+									<div class="flex center">
+										<ol class="sub">
+											<li>CBTL 가이드</li>
+											<li>CBTL 서비스</li>
+											<li>AS 안내</li>
+											<li>AS 신청</li>
+											<li>CBTL FAQ</li>
+											<li>제품설명서</li>
+										</ol>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</section>
+					<section id="search">
+						<div class="wrap flex column center">
+							<input type="text" placeholder="검색">
+						</div>
+					</section>						
+				</div>
+			</section>
+			<section id="location">
+				<h1>페이지 카테고리</h1>
+				<div class="wrap">
+					<div class="view-size">
+						<a href="/">HOME</a>
+					</div>
+				</div>
+			</section>
+		</div>
+    </header> 
+     <main th:replace=${main}>
+    	메인섹션이 삽입되는 영역입니다.
+    </main>
+
+   <footer>
+    	<!-- //////하단영역////////////////////////////////////////// -->
+			<section class="wrap view-size">
+				<h1>푸터메뉴</h1>
+				<div class="ft">
+					<div class="wrap view-size flex around">
+						<ul>
+							<li>Buy Online<li>
+							<a href="#">VIEW ALL</a>
+							<a href="#">커피</a>
+							<a href="#">티</a>
+							<a href="#">CBTL 시스템</a>
+							<a href="#">상품</a>
+						</ul>	
+						<ul>
+							<li>Member`s Club<li>
+							<a href="#">커피빈 멤버스 클럽</a>
+							<a href="#">나의 커피빈</a>
+						</ul>	
+						<ul>
+							<li>Menu<li>
+							<a href="#">음료</a>
+							<a href="#">푸드</a>
+							<a href="#">상품</a>
+							<a href="#">카드</a>
+						</ul>	
+						<ul>
+							<li>Store & 서비스<li>
+							<a href="#">케이터링 서비스</a>
+							<a href="#">매장 찾기</a>
+							<a href="#">신규 매장</a>
+						</ul>	
+						<ul>
+							<li>The Coffee Bean<li>
+							<a href="#">커피빈 코리아</a>
+							<a href="#">커피빈 소식</a>
+							<a href="#">사회 공헌</a>
+							<a href="#">제휴 마케팅 제안</a>
+							<a href="#">채용안내</a>
+							<a href="#">신규 입점 제의</a>
+							<a href="#">결산공고</a>
+						</ul>	
+						<ul>
+							<li>CBTL<li>
+							<a href="#">CBTL 가이드</a>
+							<a href="#">CBTL 서비스</a>
+							<a href="#">AS 안내</a>
+							<a href="#">AS 신청</a>
+							<a href="#">CBTL FAQ</a>
+							<a href="#">제품설명서</a>
+						</ul>	
+					</div>
+				</div>	
+			</section>
+			<section class="wrap view-size flex">
+				<h1>약관&amp;정책</h1>
+				<div class="fb">
+					<ul>
+						<li>홈페이지 이용약관 </li>
+						<li>ㅣ</li>
+						<li>개인정보처리방침</li>
+						<li>ㅣ</li>
+						<li>영상정보처리기기운영방침</li>
+						<li>ㅣ</li>
+						<li>멤버스카드이용약관</li>
+						<li>ㅣ</li>
+						<li>위치기반서비스 이용약관</li>
+					</ul>
+					<div>
+						<p>(주)망고라떼코리아 대표이사 윤성호 ㅣ 사업자등록번호 120-86-07029 ㅣ 통신판매업신고 제 2000-서울강남-12345</p>
+						<p>서울시 강남구 ㅣ 고객센터 02-1234-5678 (09:00 - 18:00) ㅣE-mail : mlk@mangolattekorea.com</p>
+						<p>ⓒ 2021. The Mango Latte. All rights reserved.</p>
+					</div>
+				</div>
+			</section>
+			<section>
+			
+			</section>
+			<!-- //////////////////////////////////////////////// -->
+			
+    </footer>
+</body>
+
+<!--   <div th:replace="common/header ::header"></div>
+  <div ><a href="/">게시판</a> </div>
+    <main th:replace="${main}">
+		    메인섹션이 삽입되는 영역
+    </main>
+ <div th:replace="common/footer ::footer"></div> -->
+</html>

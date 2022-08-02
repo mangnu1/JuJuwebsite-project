@@ -1,0 +1,71 @@
+@charset "UTF-8";
+
+.li1{
+	font-size: 30px;
+	margin-left: 20px;
+	line-height: 72.97px;
+	color: #5F2D9A;
+	text-align: center;
+	margin: 50px 0 ;
+	
+}
+
+table{
+	margin-left:auto;
+	margin-right:auto;
+	height: 30px;
+	border: 1px solid #FFDC17;
+}
+
+#detail-view table tr th,td{
+	border: 1px solid #FFDC17;
+	width: 300px;
+	height: 50px;
+	text-align: center;
+}
+
+.content td{
+	height: 200px;
+}
+
+.buttonList{
+display: flex;
+height: 100%;
+line-height: 50px;
+}
+.buttonList div{
+	width: 33%;
+	border:1px solid #5F2D9A;
+}
+.buttonList div a{
+	display: inline-block;
+	width:100%;
+	background-color: #5F2D9A;
+	color:white;
+}
+.buttonList div button{
+	width: 100%;
+	border: none;
+	background: #5F2D9A;
+	color:white;
+}
+.buttonList div button:hover{
+	text-decoration: underline;
+	
+}
+.buttonList div{
+	border-right: 1px solid white;
+	}
+
+	#edit-page tr th{
+	border: 1px solid #FFDC17;
+	width: 300px;
+	height: 50px;
+	text-align: center;
+	}
+	#edit-page tr:nth-child(5) td{
+	width: 400px;
+	height: 400px;
+	}
+	#edit-page tr:nth-child(5) .note-editable{
+	height: 300px}

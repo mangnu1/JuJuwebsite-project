@@ -1,0 +1,83 @@
+@charset "UTF-8";
+
+/* table tr td{
+	border:1px solid blue;
+} */
+
+/* thead tr td{
+	margin-bottom: 10px;
+}
+ */
+
+#items-reg input[type=file]{
+	display: none;
+}
+/* #goods-reg>.wrap form ul li input[type=file]{
+	display: block;
+} */
+#items-reg input[type=file]+label{
+	display: block;
+	width: 150px;
+	height: 150px;
+	background-color: rgba(255, 220, 23, 0.5);  /* 투명도 0.2는 */
+	font-size: 24px;
+	font-weight: 700;
+	line-height: 150px;
+	text-align: center;
+	border: 1px dotted rgba(0,0,0, 0.2);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: contain;
+		
+}
+
+#allcategory{
+	display: flex;
+	margin-bottom: 10px;
+	margin-right: 10px;
+}
+
+#allcategory option{
+	display: flex;
+}
+
+#allcategory select{
+	width: 180px;
+	height: 40px;
+	line-height: 40px;
+	padding-left: 10px;
+}
+
+#catea {
+	margin-right: 10px;	
+}
+
+#items-reg #item-write>.td1{
+	margin-right: 10px; /* 왜 안먹힐까? */
+}
+
+#item-write td input{
+	width: 180px;
+	height: 40px;
+	line-height: 40px;
+	margin-bottom: 10px;
+	padding-left: 10px;
+}
+
+#sale-select select{
+	display: flex;
+	width: 100px;
+	height: 40px;
+	line-height: 40px;
+	margin-bottom: 10px;
+}
+#sale{
+	margin-right: 10px;	
+}
+
+
+
+#save-btn, #list-btn {
+	width: 100px;
+	height: 40px;
+}

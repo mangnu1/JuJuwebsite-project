@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+th:replace="~{layout/layout1 :: layout(~{::head}, ~{::main})}">
+
+<head>
+	<script type="text/javascript" src="/js/visual.js"></script>
+	<script type="text/javascript" src="/js/itemslist.js"></script>
+	<link rel="stylesheet" href="/css/index.css"/>
+		<script th:inline="javascript">
+		$(document).ready(function() {
+			var success =/*[[${success}]]*/"";
+			if(success!=null) {
+				alert(success);
+			}
+		});
+	</script>
+</head>
+<body>
+	<!-- //////////////////////////////////////////////////// -->
+	<main>
+		<h1>메인컨텐츠</h1>
+		<div class="wrap">
+			<h1>비주얼 이미지</h1>
+			<section id="visual">
+				<h1>비주얼이미지</h1>
+				<div class="wrap area">
+				비주얼이미지가 들어가요 - 관리자 페이지에서 설정
+				</div>
+			</section>
+			<!-- //////////////////////////////////////////////////////////// -->
+			<section id="content" class="view-size">
+				<h1>메인컨텐츠</h1>
+				<div class="wrap">
+				<section id="items-list">
+					<h1>상품리스트1</h1>
+					<div class="wrap">상품리스트 넣어주세요1</div>
+				</section>
+				</div>	
+	</section>
+		
+		
+		<!-- //////////////////////////////////////////////////////////// -->
+			<div>
+		
+			
+			<section id="main-image">
+				<h1>메인이미지</h1>
+				<div class="wrap view-size flex center">
+					<a href="https://www.coffeebeankorea.com/news/view.asp?seq=322&page=1&category=1&viewMode=1"></a>
+				</div>
+			</section>
+			<section>
+				<!-- <h1>mango's pick</h1> -->
+				<!-- <div>
+					<section id="product">
+						<div class="wrap view-size flex center">
+							<div class="product-slide">
+								<h2>mango's pick</h2>
+								<div>
+									<p class="photo"></p>
+								<p class="txt_box">
+									<span class="name">그립 더블월 빅 글라스(오로라)550ml</span>
+									<span class="num"></span>
+									<span class="price">14,000원</span>
+								</p>
+								<p>
+									<span class="name">워터드롭 더블 월 글라스(오로라) 470ml</span>
+									<span class="num"></span>
+									<span class="price">11,000원</span>
+								</p>
+								<p class="txt_box">
+									<span class="name">(펫전용)펫리드줄(소프트퍼플)</span>
+									<span class="num"></span>
+									<span class="price">10,000원</span>
+								</p>
+								<p class="txt_box">
+									<span class="name">(펫전용)H형하네스&amp;원형파우치세트</span>
+									<span class="num"></span>
+									<span class="price">22,000원</span>
+								</p>
+								<p class="txt_box">
+									<span class="name">커피빈 x 나인웨어 피크닉세트(2인)</span>
+									<span class="num">(인당 2개 구매제한)</span>
+									<span class="price">35,000원</span>
+								</p>
+								<p class="txt_box">
+									<span class="name">웨이브글라스머그(오로라) 450ml</span>
+									<span class="num"></span>
+									<span class="price">15,000원</span>
+								</p>
+								<p class="txt_box">
+									<span class="name">그립스텐텀블러(소프트퍼플) 540ML</span>
+									<span class="num"></span>
+									<span class="price">23,000원</span>
+								</p>
+								<p>
+									<span class="name">앵글스텐텀블러 500ml</span>
+									<span class="num"></span>
+									<span class="price">16,000원</span>
+								</p>			
+										
+								</div>
+							</div>
+						</div>
+					</section>
+				
+					
+				</div> -->
+			</section>
+			<section id="new-product">
+				<h1>새 상품</h1>
+				<h2>What's new</h2>
+				<section>
+				
+				</section>
+					<div class="wonderful wrap between view-size">
+									<div class="text-wrap flex between">
+										<div>
+											<img src="/css/images/index/slide2/1.jpg">
+											<p class="desc_box">
+												<span class="subject">2022 06 Bacon Scallion Cream Cheese Bagel</span>
+											</p>
+										</div>
+										<div>
+											<img src="/css/images/index/slide2/2.jpg">
+											<p class="desc_box">
+												<span class="subject">2022 06 What a Sweet Color Purple</span>
+											</p>
+										</div>
+										<div>
+											<img src="/css/images/index/slide2/3.jpg">
+											<p class="desc_box">
+												<span class="subject">2022 What a Sweet Colot Purple</span>
+											</p>
+										</div>
+									</div>
+									
+								<div class="text-wrap flex between">
+									<div class="text-wrap">
+										<img src="/css/images/index/slide2/7.jpg">
+										<p class="desc_box">
+											<span class="subject">2022 05 My Marvelous Dimon</span>
+										</p>
+									</div>
+									<div class="text-wrap">
+										<img src="/css/images/index/slide2/8.jpg">
+										<p class="desc_box">
+											<span class="subject">2022 05 Coffeebean Whole Cake</span>
+										</p>
+									</div>
+									<div class="text-wrap">
+										<img src="/css/images/index/slide2/9.jpg">
+										<p class="desc_box">
+											<span class="subject">2022 04 Coffeebean with Jeju</span>
+										</p>
+									</div>
+								</div>
+								<div class="text-wrap flex between lastLine">
+										<div>
+											<img src="/css/images/index/slide2/4.jpg">
+											<p class="desc_box">
+												<span class="subject">2022 06 Do It(eat) Yourself</span>
+											</p>
+										</div>
+										<div>
+											<img src="/css/images/index/slide2/5.jpg">
+											<p class="desc_box">
+												<span class="subject">2022 06 My Pleasure In Ordinary Days</span>
+											</p>
+										</div>
+										<div>
+											<img src="/css/images/index/slide2/6.jpg">
+											<p class="desc_box">
+												<span class="subject">2022 05 Fresh Milk Honey Cake &amp; White Cheese Mousse Cake</span>
+											</p>
+										</div>
+								</div>
+							</div>
+					
+			</section>
+			
+			<section id="main-image2">
+				<h1>메인이미지2</h1>
+				<div>
+					<a href="https://www.coffeebeankorea.com/promotion/view.asp?seq=3456&page=1&category=1&viewMode=1"></a>
+				</div>
+			</section>
+			<section id="mainbt-insta">
+				<div class="wrap view-size">
+					<h2>#망고라떼코리아 #망고라떼맛있다 #망고라떼사랑해</h2>
+					<h1>메인하단 인스타</h1>
+					<ul class="wrap flex center">
+						<li>
+							<a href="#">
+								<img src="/css/images/index/instaimg/1.jpg">
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<img src="/css/images/index/instaimg/2.jpg">
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<img src="/css/images/index/instaimg/3.jpg">
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<img src="/css/images/index/instaimg/4.jpg">
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<img src="/css/images/index/instaimg/5.jpg">
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<img src="/css/images/index/instaimg/6.jpg">
+							</a>
+						</li>
+						</ul>
+						<ul class="wrap flex center">
+						<li>
+							<a href="#">
+								<img src="/css/images/index/instaimg/7.jpg">
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<img src="/css/images/index/instaimg/8.jpg">
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<img src="/css/images/index/instaimg/9.jpg">
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<img src="/css/images/index/instaimg/10.jpg">
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<img src="/css/images/index/instaimg/11.jpg">
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<img src="/css/images/index/instaimg/12.jpg">
+							</a>
+						</li>
+						
+					</ul>
+					
+					
+				</div>
+			</section>
+			</div>	
+		
+		
+	</div>
+	</main>
+</body>
+</html>
+	
+	

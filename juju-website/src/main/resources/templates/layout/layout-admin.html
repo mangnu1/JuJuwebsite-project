@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+th:fragment="layout(head,main)">
+<head>
+
+	<meta name="_csrf" th:content="${_csrf.token}"/>
+	<meta name="_csrf_header" th:content="${_csrf.headerName}"/>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script type="text/javascript" src="/js/itemslist.js"></script>
+	<script type="text/javascript" src="/js/visual.js"></script>
+	<link rel="shortcut icon" href="/images/icon/mangocafe.png">
+<link rel="stylesheet" href="/css/admin/default.css"/>
+<link rel="stylesheet" href="/css/reset.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+
+
+<!--  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHYUN HOME</title>
+     <meta name="_csrf" th:content="${_csrf.token}"/>
+	
+	<meta name="_csrf_header" th:content="${_csrf.headerName}"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    
+    공통적용할 css
+    <link rel="stylesheet" href="/css/common/reset.css">
+    <link rel="stylesheet" href="/css/common/common.css">
+    default header name is X-CSRF-TOKEN
+    <link rel="stylesheet" href="/css/common/layout-admin.css">
+ -->    
+    <!-- summernote css -->
+    <th:block th:replace="${head}">page에서 설정한 head정보가 삽입</th:block>
+</head>
+<body class="flex">
+  	<header>
+  		<div class="wrap">
+	    		<div id="top">
+	    			<a href="/admin/home">관리자 홈</a>
+	    		</div>
+				<dl>
+					<dt><a href="#">비주얼 관리1</a></dt>
+					<dd><a href="/admin/visuals">리스트</a></dd>
+					<dd><a href="/admin/visuals/write">등록하기</a></dd>
+				</dl>
+				<dl>
+					<dt><a href="#">판매 상품</a></dt>
+					<dd><a href="/admin/items">리스트</a></dd>
+					<dd><a href="/admin/items/write">등록하기</a></dd>
+				</dl>
+				<dl>
+					<dt><a href="#">관리3</a></dt>
+					<dd><a href="#">리스트</a></dd>
+					<dd><a href="#">등록하기</a></dd>
+				</dl>
+				<dl>
+					<dt><a href="#">관리4</a></dt>
+					<dd><a href="#">리스트</a></dd>
+					<dd><a href="#">등록하기</a></dd>
+				</dl>
+				<div id="bottom">
+					<a href="/">홈페이지 이동</a>
+				</div>
+	    	</div>
+  	</header>
+    <main th:replace=${main}>
+    	메인섹션이 삽입되는 영역입니다.
+    </main>
+   
+</body>
+</html>

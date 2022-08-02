@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+th:replace="~{layout/layout-admin :: layout(~{::head}, ~{::main})}">
+<head>
+<!-- default header name is X-CSRF-TOKEN -->
+</head>
+<body class="flex">
+	<header>
+			<div class="wrap">
+	    		<div id="top">
+	    			<a href="/admin/home">관리자 홈</a>
+	    		</div>
+				<dl>
+					<dt><a href="#">비주얼 관리1</a></dt>
+					<dd><a href="/admin/visuals">리스트</a></dd>
+					<dd><a href="/admin/visuals/write">등록하기</a></dd>
+				</dl>
+				<dl>
+					<dt><a href="#">판매 상품</a></dt>
+					<dd><a href="/admin/items">리스트</a></dd>
+					<dd><a href="/admin/items/write">등록하기</a></dd>
+				</dl>
+				<dl>
+					<dt><a href="#">관리3</a></dt>
+					<dd><a href="#">리스트</a></dd>
+					<dd><a href="#">등록하기</a></dd>
+				</dl>
+				<dl>
+					<dt><a href="#">관리4</a></dt>
+					<dd><a href="#">리스트</a></dd>
+					<dd><a href="#">등록하기</a></dd>
+				</dl>
+				<div id="bottom">
+					<a href="/">홈페이지 이동</a>
+				</div>
+	    	</div>
+	</header>
+	  <main th:replace=${main}>
+    	메인섹션이 삽입되는 영역입니다.
+    </main>
+</body>
+</html>

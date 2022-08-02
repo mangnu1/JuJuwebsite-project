@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<select name="caNo">
+	<option >2차 카테고리</option>
+	<th:block th:each="op :${option}">
+	<option th:value="${op.caNo}">[[${op.name}]]</option><!-- 1차 카테고리 번호? -->
+	</th:block>
+</select>
+<!-- <script type="text/javascript">
+$(".catea").change(cateAdd);
+</script> -->
+<button type="button" class="btn-addCate" onclick="btnAddCateClicked">추가</button>
+<button type="button" class="btn-removeCate" onclick="btnRemoveCateClicked">삭제</button>
+</html>
